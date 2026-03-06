@@ -502,6 +502,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
         }
 
         .romantic-question h2 {
@@ -528,6 +529,7 @@
             position: relative;
             min-height: 100px;
             padding: 30px;
+            width: 100%;
         }
 
         .btn-yes {
@@ -581,7 +583,7 @@
         }
 
         .btn-no.moving {
-            position: fixed;
+            position: absolute;
         }
 
         .success-message-final {
@@ -1126,16 +1128,22 @@
         // ===== ROMANTIC QUESTION LOGIC =====
         const noBtn = document.getElementById('noBtn');
 
-        // Position NO button randomly on page
+        // Position NO button randomly within romantic-question container
         function moveButton() {
+            const container = document.querySelector('.romantic-question');
+            const containerWidth = container.offsetWidth;
+            const containerHeight = container.offsetHeight;
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Random position within container, leaving margin
+            const randomX = Math.random() * (containerWidth - btnWidth - 40) + 20;
+            const randomY = Math.random() * (containerHeight - btnHeight - 40) + 20;
+            
             noBtn.classList.add('moving');
-            
-            // Random position on screen
-            const randomX = Math.random() * (window.innerWidth - 150);
-            const randomY = Math.random() * (window.innerHeight - 100) + 50;
-            
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = (container.getBoundingClientRect().left + randomX) + 'px';
+            noBtn.style.top = (container.getBoundingClientRect().top + randomY) + 'px';
         }
 
         // Move on hover
