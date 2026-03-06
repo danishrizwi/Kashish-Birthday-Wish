@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Lora:wght@400;500;600&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Happy Birthday Kashish ❤</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,14 +13,16 @@
         }
 
         :root {
-            --pink-light: #ffd6e8;
-            --pink-main: #ff9fc5;
-            --pink-dark: #e85c9f;
-            --white: #fef9f7;
+            --hot-pink: #e85c9f;
+            --pink-light: #ff9fc5;
+            --pink-pale: #ffd6e8;
             --gold: #d4af37;
-            --silver: #e8e8e8;
-            --text-dark: #4a3a4a;
-            --cream: #fffaf5;
+            --gold-light: #f0e6d2;
+            --cream: #fef9f7;
+            --navy: #2c3e50;
+            --black-soft: #2a2a2a;
+            --text-dark: #5a4a5a;
+            --pink-bg: #fdf4f8;
         }
 
         html {
@@ -28,11 +30,243 @@
         }
 
         body {
-            font-family: 'Lora', serif;
-            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
-            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fdf4f8 0%, #fef9f7 50%, #f9f5f8 100%);
+            color: var(--black-soft);
             overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
+        }
+
+        /* ===== ANIMATED BACKGROUND ===== */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.08;
+            filter: blur(0.5px);
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 30% 30%, var(--hot-pink), transparent);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle at 40% 40%, var(--gold), transparent);
+            border-radius: 50%;
+            bottom: -80px;
+            left: 10%;
+            animation: float 30s ease-in-out infinite reverse;
+            animation-delay: 5s;
+        }
+
+        .shape-3 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at 50% 50%, var(--hot-pink), transparent);
+            border-radius: 50%;
+            top: 50%;
+            left: -100px;
+            animation: float 28s ease-in-out infinite;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(40px, 40px) rotate(10deg); }
+        }
+
+        /* ===== ENTRANCE CELEBRATION ===== */
+        .entrance-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            animation: fadeOutOverlay 2.5s ease-out forwards;
+        }
+
+        @keyframes fadeOutOverlay {
+            0% { opacity: 1; }
+            70% { opacity: 1; }
+            100% { opacity: 0; pointer-events: none; }
+        }
+
+        .celebration-text {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--hot-pink);
+            animation: celebrationBounce 2s ease-in-out;
+            text-shadow: 0 10px 30px rgba(232, 92, 159, 0.3);
+            letter-spacing: -1px;
+        }
+
+        @keyframes celebrationBounce {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(100px);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) translateY(-30px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8) translateY(200px);
+            }
+        }
+
+        /* ===== BALLOONS ===== */
+        .balloon {
+            position: fixed;
+            width: 40px;
+            height: 50px;
+            border-radius: 50% 50% 50% 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .balloon::before {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            width: 2px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.1);
+            transform: translateX(-1px);
+        }
+
+        .balloon.red {
+            background: linear-gradient(135deg, #e85c9f, #ff69b4);
+            animation: floatBalloon 4s ease-in forwards;
+        }
+
+        .balloon.gold {
+            background: linear-gradient(135deg, #d4af37, #ffd700);
+            animation: floatBalloon 4.5s ease-in forwards;
+        }
+
+        .balloon.pink {
+            background: linear-gradient(135deg, #ff9fc5, #ffe0ed);
+            animation: floatBalloon 4.2s ease-in forwards;
+        }
+
+        @keyframes floatBalloon {
+            0% {
+                bottom: -100px;
+                opacity: 1;
+                transform: translateX(0) rotateZ(0deg);
+            }
+            100% {
+                bottom: 110vh;
+                opacity: 0;
+                transform: translateX(var(--tx, 0)) rotateZ(15deg);
+            }
+        }
+
+        /* ===== PARTY POPPERS ===== */
+        .popper {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .popper-burst {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            animation: popperExplode 1.5s ease-out forwards;
+        }
+
+        .popper-item {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        @keyframes popperExplode {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.3);
+            }
+        }
+
+        /* ===== FLOATING HEARTS ===== */
+        .heart-float {
+            position: fixed;
+            font-size: 2rem;
+            pointer-events: none;
+            z-index: 998;
+            animation: heartFloat 3s ease-out forwards;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) translateX(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-300px) translateX(var(--tx, 0)) scale(0.5);
+            }
+        }
+
+        /* ===== FLOATING CAKE ===== */
+        .cake-emoji {
+            position: fixed;
+            font-size: 5rem;
+            pointer-events: none;
+            z-index: 998;
+            animation: cakeFloat 4s ease-out forwards;
+        }
+
+        @keyframes cakeFloat {
+            0% {
+                opacity: 1;
+                transform: scale(0) rotate(-20deg) translateY(0);
+            }
+            20% {
+                transform: scale(1) rotate(0deg);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(1) rotate(5deg) translateY(-400px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) rotate(20deg) translateY(-600px);
+            }
         }
 
         /* ===== PARTICLES ===== */
@@ -43,57 +277,69 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
         .particle {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--pink-main);
+            width: 1.5px;
+            height: 1.5px;
+            background: var(--hot-pink);
             border-radius: 50%;
-            opacity: 0.3;
-            animation: float 6s ease-in-out infinite;
+            opacity: 0.4;
+            animation: sparkle 4s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 0.6; transform: scale(1.2); }
         }
 
         /* ===== HEADER ===== */
         header {
             text-align: center;
-            padding: 60px 40px;
+            padding: 80px 40px 60px;
             position: relative;
             z-index: 10;
-            background: linear-gradient(135deg, rgba(255, 214, 232, 0.3) 0%, rgba(255, 159, 197, 0.1) 100%);
+            background: linear-gradient(180deg, rgba(253, 244, 248, 0.8) 0%, rgba(255, 159, 197, 0.15) 100%);
+            border-bottom: 1px solid rgba(232, 92, 159, 0.15);
         }
 
         h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            color: var(--pink-dark);
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 9vw, 5.5rem);
+            color: var(--hot-pink);
+            font-weight: 900;
             margin-bottom: 15px;
-            letter-spacing: -1px;
-            animation: fadeIn 0.8s ease-out;
+            letter-spacing: -2px;
+            animation: titleSlide 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-shadow: 2px 2px 4px rgba(232, 92, 159, 0.1);
         }
 
         .subtitle {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1.3rem;
-            color: var(--pink-main);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--pink-light);
             font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            animation: fadeIn 0.8s ease-out 0.2s both;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out 0.3s both;
         }
 
-        @keyframes fadeIn {
+        @keyframes titleSlide {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -103,9 +349,9 @@
 
         /* ===== MAIN CONTAINER ===== */
         .main-container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 60px 40px;
+            padding: 80px 40px;
             position: relative;
             z-index: 20;
         }
@@ -114,21 +360,21 @@
         .gallery-cards {
             display: flex;
             flex-direction: column;
-            gap: 80px;
+            gap: 100px;
         }
 
         .card {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
             align-items: center;
-            animation: cardEnter 0.8s ease-out both;
+            animation: fadeInUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
         }
 
-        @keyframes cardEnter {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(40px);
+                transform: translateY(60px);
             }
             to {
                 opacity: 1;
@@ -143,70 +389,73 @@
         .card:nth-child(5) { animation-delay: 0.5s; }
         .card:nth-child(6) { animation-delay: 0.6s; }
 
-        /* Alternate layout */
         .card:nth-child(even) {
-            grid-template-columns: 1fr 1fr;
-            direction: rtl;
+            grid-template-columns: 0.9fr 1.1fr;
         }
 
-        .card:nth-child(even) > * {
-            direction: ltr;
+        .card:nth-child(even) .image-frame {
+            order: 2;
         }
 
-        /* ===== FRAME STYLES ===== */
+        .card:nth-child(even) .message-content {
+            order: 1;
+        }
+
+        /* ===== IMAGE FRAMES ===== */
         .image-frame {
             position: relative;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
         }
 
         .image-frame img {
             display: block;
-            transition: transform 0.5s ease;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            object-position: center;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .image-frame:hover img {
             transform: scale(1.08);
         }
 
-        /* ===== FRAME 1: HEART SHAPE ===== */
+        /* ===== FRAME 1: ORNATE HEART ===== */
         .frame-heart {
-            width: 400px;
+            width: 380px;
             height: 420px;
             margin: 0 auto;
+            position: relative;
+            filter: drop-shadow(0 20px 60px rgba(212, 85, 106, 0.25));
+            transition: filter 0.5s ease;
         }
 
-        .frame-heart svg {
+        .frame-heart::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 20px 60px rgba(232, 92, 159, 0.3));
+            background: var(--cream);
+            clip-path: polygon(50% 100%, 0% 65%, 0% 35%, 25% 0%, 50% 20%, 75% 0%, 100% 35%, 100% 65%);
+            border: 3px solid var(--gold);
+            z-index: -1;
+            box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.2);
         }
 
         .frame-heart img {
-            width: 85%;
-            height: 85%;
-            clip-path: polygon(50% 100%, 0% 60%, 0% 35%, 25% 0%, 50% 20%, 75% 0%, 100% 35%, 100% 60%);
+            clip-path: polygon(50% 100%, 0% 65%, 0% 35%, 25% 0%, 50% 20%, 75% 0%, 100% 35%, 100% 65%);
         }
 
         .frame-heart:hover {
-            transform: scale(1.05);
+            filter: drop-shadow(0 30px 80px rgba(232, 92, 159, 0.35));
+            transform: scale(1.06);
         }
 
-        .frame-heart:hover svg {
-            filter: drop-shadow(0 30px 80px rgba(232, 92, 159, 0.4));
-        }
-
-        /* ===== FRAME 2: CIRCLE ===== */
+        /* ===== FRAME 2: LUXURY CIRCLE ===== */
         .frame-circle {
             width: 380px;
             height: 380px;
@@ -214,152 +463,136 @@
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 
-                0 0 0 18px var(--white),
-                0 0 0 24px var(--gold),
-                0 25px 70px rgba(212, 175, 55, 0.3);
-            border: 8px solid var(--gold);
-        }
-
-        .frame-circle:hover {
-            transform: scale(1.05) rotateZ(5deg);
-            box-shadow: 
-                0 0 0 18px var(--white),
-                0 0 0 24px var(--gold),
-                0 35px 90px rgba(212, 175, 55, 0.4);
-        }
-
-        /* ===== FRAME 3: ROUNDED RECTANGLE ===== */
-        .frame-rounded-rect {
-            width: 380px;
-            height: 420px;
-            margin: 0 auto;
-            border-radius: 50px;
-            overflow: hidden;
-            box-shadow: 
-                0 0 0 16px var(--white),
-                0 0 0 22px #ff9fc5,
-                0 25px 70px rgba(255, 159, 197, 0.3);
+                0 0 0 15px var(--cream),
+                0 0 0 30px var(--gold),
+                0 40px 100px rgba(212, 175, 55, 0.35);
+            border: 5px solid var(--gold);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
         }
 
-        .frame-rounded-rect::before,
-        .frame-rounded-rect::after {
+        .frame-circle::after {
             content: '';
             position: absolute;
-            background: radial-gradient(circle, rgba(255, 159, 197, 0.2) 0%, transparent 70%);
+            inset: 0;
             border-radius: 50%;
-            z-index: 10;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
             pointer-events: none;
+            z-index: 5;
+        }
+
+        .frame-circle:hover {
+            transform: scale(1.08) rotateZ(3deg);
+            box-shadow: 
+                0 0 0 15px var(--cream),
+                0 0 0 30px var(--gold),
+                0 50px 120px rgba(212, 175, 55, 0.45);
+        }
+
+        /* ===== FRAME 3: ELEGANT RECTANGLE ===== */
+        .frame-rounded-rect {
+            width: 380px;
+            height: 450px;
+            margin: 0 auto;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 
+                0 0 0 12px var(--ivory),
+                0 0 0 24px var(--rose-dark),
+                0 35px 100px rgba(212, 85, 106, 0.3);
+            position: relative;
+            background: var(--ivory);
         }
 
         .frame-rounded-rect::before {
-            top: -50px;
-            right: -50px;
-            width: 150px;
-            height: 150px;
-        }
-
-        .frame-rounded-rect::after {
-            bottom: -50px;
-            left: -50px;
-            width: 150px;
-            height: 150px;
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+            z-index: 10;
+            pointer-events: none;
+            border-radius: 40px;
         }
 
         .frame-rounded-rect:hover {
-            transform: scale(1.05) translateY(-8px);
+            transform: scale(1.07) translateY(-10px);
             box-shadow: 
-                0 0 0 16px var(--white),
-                0 0 0 22px #ff9fc5,
-                0 35px 90px rgba(255, 159, 197, 0.4);
+                0 0 0 12px var(--ivory),
+                0 0 0 24px var(--rose-dark),
+                0 45px 120px rgba(212, 85, 106, 0.4);
         }
 
         /* ===== FRAME 4: DIAMOND ===== */
         .frame-diamond {
-            width: 350px;
-            height: 450px;
+            width: 340px;
+            height: 480px;
             margin: 0 auto;
             position: relative;
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            clip-path: polygon(50% 0%, 100% 38%, 100% 62%, 50% 100%, 0% 62%, 0% 38%);
             overflow: hidden;
-            box-shadow: 0 30px 80px rgba(240, 201, 86, 0.3);
+            box-shadow: 0 35px 100px rgba(212, 85, 106, 0.3);
         }
 
         .frame-diamond::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: var(--white);
-            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-            border: 4px solid #f0c956;
+            inset: -10px;
+            background: var(--ivory);
+            clip-path: polygon(50% 0%, 100% 38%, 100% 62%, 50% 100%, 0% 62%, 0% 38%);
+            border: 3px solid var(--accent-purple);
             z-index: -1;
-            box-shadow: 0 30px 80px rgba(240, 201, 86, 0.3);
         }
 
         .frame-diamond:hover {
-            transform: scale(1.05) rotate(3deg);
+            transform: scale(1.07) rotate(2deg);
         }
 
-        .frame-diamond:hover::before {
-            box-shadow: 0 40px 100px rgba(240, 201, 86, 0.4);
-        }
-
-        /* ===== FRAME 5: OCTAGON ===== */
+        /* ===== FRAME 5: PREMIUM OCTAGON ===== */
         .frame-octagon {
             width: 380px;
             height: 380px;
             margin: 0 auto;
             overflow: hidden;
-            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
             box-shadow: 
-                0 0 0 15px var(--white),
-                0 0 0 22px #c77d99,
-                0 25px 70px rgba(199, 125, 153, 0.3);
+                0 0 0 12px var(--ivory),
+                0 0 0 26px var(--accent-purple),
+                0 35px 100px rgba(139, 111, 154, 0.3);
             position: relative;
+            background: var(--ivory);
         }
 
         .frame-octagon:hover {
-            transform: scale(1.05);
+            transform: scale(1.07);
             box-shadow: 
-                0 0 0 15px var(--white),
-                0 0 0 22px #c77d99,
-                0 35px 90px rgba(199, 125, 153, 0.4);
+                0 0 0 12px var(--ivory),
+                0 0 0 26px var(--accent-purple),
+                0 45px 120px rgba(139, 111, 154, 0.4);
         }
 
-        /* ===== FRAME 6: STAR ===== */
+        /* ===== FRAME 6: GLAMOROUS STAR ===== */
         .frame-star {
             width: 400px;
             height: 400px;
             margin: 0 auto;
             position: relative;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            clip-path: polygon(50% 0%, 65% 35%, 100% 35%, 75% 57%, 90% 91%, 50% 70%, 10% 91%, 25% 57%, 0% 35%, 35% 35%);
             overflow: hidden;
-            box-shadow: 0 25px 70px rgba(216, 165, 165, 0.3);
+            box-shadow: 0 35px 100px rgba(201, 169, 103, 0.3);
         }
 
         .frame-star::before {
             content: '';
             position: absolute;
-            top: -20px;
-            left: -20px;
-            right: -20px;
-            bottom: -20px;
-            background: var(--white);
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            border: 5px solid #d8a5a5;
+            inset: -10px;
+            background: var(--ivory);
+            clip-path: polygon(50% 0%, 65% 35%, 100% 35%, 75% 57%, 90% 91%, 50% 70%, 10% 91%, 25% 57%, 0% 35%, 35% 35%);
+            border: 4px solid var(--gold-main);
             z-index: -1;
-            box-shadow: 0 25px 70px rgba(216, 165, 165, 0.3);
         }
 
         .frame-star:hover {
-            transform: scale(1.05) rotateZ(-5deg);
-        }
-
-        .frame-star:hover::before {
-            box-shadow: 0 35px 90px rgba(216, 165, 165, 0.4);
+            transform: scale(1.07) rotateZ(-4deg);
         }
 
         /* ===== MESSAGE CARDS ===== */
@@ -370,209 +603,250 @@
         }
 
         .message-box {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 45px 40px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(232, 92, 159, 0.12);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            padding: 50px 45px;
+            border-radius: 25px;
+            box-shadow: 0 20px 80px rgba(232, 92, 159, 0.15);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
-            animation: messageSlide 0.8s ease-out both;
+            border: 1px solid rgba(232, 92, 159, 0.15);
         }
-
-        @keyframes messageSlide {
-            from {
-                opacity: 0;
-                transform: translateX(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .card:nth-child(even) .message-box {
-            animation: messageSlideLeft 0.8s ease-out both;
-        }
-
-        @keyframes messageSlideLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .message-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(232, 92, 159, 0.18);
-        }
-
-        .message-box {
-            border-left: 6px solid var(--pink-main);
-        }
-
-        .card:nth-child(1) .message-box { border-left-color: var(--gold); }
-        .card:nth-child(2) .message-box { border-left-color: #d4a574; }
-        .card:nth-child(3) .message-box { border-left-color: #ff9fc5; }
-        .card:nth-child(4) .message-box { border-left-color: #f0c956; }
-        .card:nth-child(5) .message-box { border-left-color: #c77d99; }
-        .card:nth-child(6) .message-box { border-left-color: #d8a5a5; }
 
         .message-box::before {
             content: '"';
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: rgba(232, 92, 159, 0.15);
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            color: rgba(232, 92, 159, 0.12);
             position: absolute;
-            top: -20px;
+            top: -30px;
             left: 10px;
             z-index: 0;
+            font-weight: 900;
+        }
+
+        .message-box::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(180deg, var(--hot-pink), var(--pink-light));
+            border-radius: 25px 0 0 25px;
+        }
+
+        .card:nth-child(1) .message-box::after { background: linear-gradient(180deg, var(--gold), #e8d7b8); }
+        .card:nth-child(2) .message-box::after { background: linear-gradient(180deg, var(--hot-pink), var(--pink-light)); }
+        .card:nth-child(3) .message-box::after { background: linear-gradient(180deg, var(--gold), var(--hot-pink)); }
+        .card:nth-child(4) .message-box::after { background: linear-gradient(180deg, #d4af37, #e8d7b8); }
+        .card:nth-child(5) .message-box::after { background: linear-gradient(180deg, var(--hot-pink), var(--pink-light)); }
+        .card:nth-child(6) .message-box::after { background: linear-gradient(180deg, var(--gold), var(--hot-pink)); }
+
+        .message-box:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 100px rgba(232, 92, 159, 0.25);
+            border-color: rgba(232, 92, 159, 0.3);
         }
 
         .message-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            color: var(--pink-dark);
-            margin-bottom: 15px;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--hot-pink);
+            margin-bottom: 18px;
+            font-weight: 700;
             position: relative;
             z-index: 1;
         }
 
         .message-text {
             font-size: 1.05rem;
-            color: var(--text-dark);
-            line-height: 1.8;
+            color: var(--text-muted);
+            line-height: 1.9;
             font-weight: 300;
             position: relative;
             z-index: 1;
             font-style: italic;
+            letter-spacing: 0.3px;
         }
 
         /* ===== FINAL SECTION ===== */
         .final-section {
-            margin-top: 100px;
-            padding: 80px 60px;
+            margin-top: 120px;
+            padding: 100px 80px;
             text-align: center;
-            background: linear-gradient(135deg, rgba(255, 214, 232, 0.3) 0%, rgba(255, 159, 197, 0.1) 100%);
-            border-radius: 30px;
-            animation: cardEnter 0.8s ease-out 0.7s both;
+            background: linear-gradient(135deg, rgba(255, 214, 232, 0.4) 0%, rgba(255, 224, 237, 0.3) 100%);
+            border-radius: 40px;
+            animation: fadeInUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
+            border: 2px solid rgba(232, 92, 159, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .final-section > * {
+            position: relative;
+            z-index: 1;
         }
 
         .final-section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--pink-dark);
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--hot-pink);
+            margin-bottom: 25px;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
 
         .final-section p {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            line-height: 1.8;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            margin-bottom: 18px;
             font-weight: 300;
+            letter-spacing: 0.5px;
         }
 
         .final-section .special-message {
-            font-size: 1.4rem;
-            color: var(--pink-main);
-            margin-top: 30px;
+            font-size: 1.5rem;
+            color: var(--hot-pink);
+            margin-top: 40px;
             font-style: italic;
             font-weight: 400;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 1px;
         }
 
         /* ===== ROMANTIC QUESTION SECTION ===== */
         .romantic-question {
-            margin-top: 100px;
-            padding: 80px 60px;
+            margin-top: 120px;
+            padding: 120px 80px;
             text-align: center;
-            background: linear-gradient(135deg, rgba(255, 159, 197, 0.25) 0%, rgba(255, 214, 232, 0.35) 100%);
-            border-radius: 30px;
-            animation: cardEnter 0.8s ease-out 0.8s both;
+            background: linear-gradient(135deg, rgba(255, 159, 197, 0.18) 0%, rgba(255, 214, 232, 0.25) 100%);
+            border-radius: 40px;
+            animation: fadeInUp 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both;
             position: relative;
-            min-height: 400px;
+            min-height: 450px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            border: 2px solid rgba(232, 92, 159, 0.2);
+        }
+
+        .romantic-question::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(232, 92, 159, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .romantic-question::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232, 92, 159, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float 25s ease-in-out infinite reverse;
         }
 
         .romantic-question h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            color: var(--pink-dark);
-            margin-bottom: 60px;
-            font-weight: 700;
-            animation: pulse 2s ease-in-out infinite;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--hot-pink);
+            margin-bottom: 80px;
+            font-weight: 900;
+            animation: heartbeat 2.5s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -1px;
         }
 
-        @keyframes pulse {
+        @keyframes heartbeat {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            25% { transform: scale(1.08); }
+            50% { transform: scale(1); }
         }
 
         .buttons-container {
             display: flex;
-            gap: 20px;
+            gap: 40px;
             justify-content: center;
             align-items: center;
             flex-wrap: nowrap;
-            margin-top: 20px;
             position: relative;
-            min-height: 100px;
-            padding: 30px;
+            min-height: 120px;
             width: 100%;
+            z-index: 10;
         }
 
         .btn-yes {
-            padding: 14px 42px;
-            background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+            padding: 16px 50px;
+            background: linear-gradient(135deg, var(--hot-pink), var(--pink-light));
             color: white;
             border: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-family: 'Quicksand', sans-serif;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 1.5px;
-            box-shadow: 0 12px 35px rgba(232, 92, 159, 0.3);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 15px 50px rgba(232, 92, 159, 0.35);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
             text-transform: uppercase;
             position: relative;
-            z-index: 10;
             flex-shrink: 0;
             white-space: nowrap;
+            border: 2px solid transparent;
         }
 
         .btn-yes:hover {
-            transform: scale(1.12) translateY(-5px);
-            box-shadow: 0 20px 50px rgba(232, 92, 159, 0.5);
+            transform: scale(1.15) translateY(-8px);
+            box-shadow: 0 25px 70px rgba(232, 92, 159, 0.5);
+        }
+
+        .btn-yes:active {
+            transform: scale(1.08) translateY(-4px);
         }
 
         .btn-no {
-            padding: 14px 42px;
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--pink-dark);
-            border: 3px solid var(--pink-dark);
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-family: 'Quicksand', sans-serif;
+            padding: 16px 50px;
+            background: rgba(255, 255, 255, 0.98);
+            color: var(--hot-pink);
+            border: 2.5px solid var(--hot-pink);
+            border-radius: 60px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
             cursor: grab;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 1.5px;
-            box-shadow: 0 10px 30px rgba(232, 92, 159, 0.2);
+            box-shadow: 0 12px 40px rgba(232, 92, 159, 0.2);
             transition: all 0.15s ease;
             text-transform: uppercase;
             position: relative;
-            z-index: 10;
             flex-shrink: 0;
             user-select: none;
             white-space: nowrap;
@@ -583,57 +857,70 @@
         }
 
         .btn-no.moving {
-            position: absolute;
+            position: fixed;
         }
 
         .success-message-final {
-            margin-top: 60px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
+            margin-top: 80px;
+            padding: 50px 60px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 214, 232, 0.4) 100%);
+            border-radius: 30px;
             display: none;
-            animation: fadeIn 0.8s ease-out;
+            animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 25px 80px rgba(232, 92, 159, 0.2);
+            border: 2px solid var(--pink-light);
+            position: relative;
+            z-index: 10;
         }
 
         .success-message-final h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--pink-dark);
-            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--hot-pink);
+            margin-bottom: 20px;
+            font-weight: 900;
         }
 
         .success-message-final p {
-            font-size: 1.3rem;
-            color: var(--text-dark);
+            font-size: 1.4rem;
+            color: var(--text-muted);
             font-style: italic;
+            letter-spacing: 0.5px;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            padding: 50px 40px;
+            padding: 60px 40px;
             text-align: center;
-            background: linear-gradient(135deg, var(--pink-light) 0%, rgba(255, 159, 197, 0.5) 100%);
-            color: var(--text-dark);
-            border-top: 2px solid rgba(255, 159, 197, 0.2);
-            font-size: 0.95rem;
+            background: linear-gradient(135deg, #ffd6e8 0%, #ffe0ed 100%);
+            color: var(--black-soft);
+            border-top: 2px solid rgba(232, 92, 159, 0.25);
+            font-size: 1rem;
             font-weight: 300;
             letter-spacing: 1px;
         }
 
         /* ===== RESPONSIVE ===== */
-        /* Large Tablets and Small Desktops */
         @media (max-width: 1024px) {
             .card {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 50px;
             }
 
             .card:nth-child(even) {
-                direction: ltr;
+                grid-template-columns: 1fr;
+            }
+
+            .card:nth-child(even) .image-frame {
+                order: 0;
+            }
+
+            .card:nth-child(even) .message-content {
+                order: 0;
             }
 
             .main-container {
-                padding: 40px 30px;
+                padding: 50px 30px;
             }
 
             .frame-heart,
@@ -646,275 +933,107 @@
                 max-width: 350px;
             }
 
-            .message-box {
-                padding: 35px 30px;
+            h1 {
+                font-size: 3.5rem;
             }
 
             .buttons-container {
-                gap: 15px;
-            }
-
-            h1 {
-                font-size: 3rem;
+                gap: 25px;
             }
         }
 
-        /* Tablets */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .subtitle {
-                font-size: 1rem;
+                font-size: 1.3rem;
             }
 
             header {
-                padding: 40px 20px;
+                padding: 50px 20px 40px;
             }
 
             .main-container {
-                padding: 30px 20px;
+                padding: 40px 20px;
+            }
+
+            .gallery-cards {
+                gap: 60px;
+            }
+
+            .frame-heart,
+            .frame-circle,
+            .frame-rounded-rect,
+            .frame-diamond,
+            .frame-octagon,
+            .frame-star {
+                width: 280px;
+            }
+
+            .message-box {
+                padding: 35px 30px;
+                font-size: 0.9rem;
+            }
+
+            .message-title {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+            }
+
+            .message-text {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .final-section {
+                padding: 60px 40px;
+            }
+
+            .final-section h2 {
+                font-size: 2.8rem;
+            }
+
+            .romantic-question {
+                padding: 60px 40px;
+                min-height: 380px;
+            }
+
+            .romantic-question h2 {
+                font-size: 2.8rem;
+                margin-bottom: 50px;
+            }
+
+            .btn-yes, .btn-no {
+                padding: 14px 40px;
+                font-size: 0.9rem;
+            }
+
+            .buttons-container {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            header {
+                padding: 40px 15px 30px;
+            }
+
+            .main-container {
+                padding: 30px 15px;
             }
 
             .gallery-cards {
                 gap: 50px;
-            }
-
-            .frame-heart {
-                width: 280px;
-                height: 300px;
-            }
-
-            .frame-circle {
-                width: 280px;
-                height: 280px;
-            }
-
-            .frame-rounded-rect {
-                width: 280px;
-                height: 320px;
-            }
-
-            .frame-diamond {
-                width: 260px;
-                height: 340px;
-            }
-
-            .frame-octagon {
-                width: 280px;
-                height: 280px;
-            }
-
-            .frame-star {
-                width: 280px;
-                height: 280px;
-            }
-
-            .message-box {
-                padding: 25px 20px;
-                font-size: 0.9rem;
-            }
-
-            .message-title {
-                font-size: 1.2rem;
-                margin-bottom: 12px;
-            }
-
-            .message-text {
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-
-            .final-section {
-                padding: 50px 25px;
-            }
-
-            .final-section h2 {
-                font-size: 2.5rem;
-                margin-bottom: 15px;
-            }
-
-            .final-section p {
-                font-size: 1rem;
-            }
-
-            .romantic-question {
-                padding: 50px 25px;
-                min-height: 350px;
-            }
-
-            .romantic-question h2 {
-                font-size: 2.5rem;
-                margin-bottom: 40px;
-            }
-
-            .btn-yes, .btn-no {
-                padding: 12px 30px;
-                font-size: 0.85rem;
-            }
-
-            .buttons-container {
-                gap: 12px;
-                padding: 20px;
-            }
-
-            footer {
-                padding: 40px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Small Phones */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            .subtitle {
-                font-size: 0.9rem;
-                letter-spacing: 2px;
-            }
-
-            header {
-                padding: 30px 15px;
-            }
-
-            .main-container {
-                padding: 20px 15px;
-            }
-
-            .gallery-cards {
-                gap: 40px;
-            }
-
-            .frame-heart {
-                width: 100%;
-                max-width: 250px;
-                height: 270px;
-            }
-
-            .frame-circle {
-                width: 100%;
-                max-width: 250px;
-                height: 250px;
-            }
-
-            .frame-rounded-rect {
-                width: 100%;
-                max-width: 250px;
-                height: 290px;
-            }
-
-            .frame-diamond {
-                width: 100%;
-                max-width: 230px;
-                height: 300px;
-            }
-
-            .frame-octagon {
-                width: 100%;
-                max-width: 250px;
-                height: 250px;
-            }
-
-            .frame-star {
-                width: 100%;
-                max-width: 250px;
-                height: 250px;
-            }
-
-            .message-box {
-                padding: 20px 15px;
-                font-size: 0.85rem;
-                margin-bottom: 20px;
-            }
-
-            .message-title {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
-            }
-
-            .message-text {
-                font-size: 0.9rem;
-                line-height: 1.5;
-            }
-
-            .message-box::before {
-                font-size: 2.5rem;
-                top: -10px;
-                left: 5px;
-            }
-
-            .final-section {
-                padding: 40px 20px;
-            }
-
-            .final-section h2 {
-                font-size: 2rem;
-                margin-bottom: 12px;
-            }
-
-            .final-section p {
-                font-size: 0.95rem;
-                margin-bottom: 10px;
-            }
-
-            .final-section .special-message {
-                font-size: 1.1rem;
-                margin-top: 15px;
-            }
-
-            .romantic-question {
-                padding: 40px 20px;
-                min-height: 300px;
-                margin-top: 60px;
-            }
-
-            .romantic-question h2 {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-
-            .btn-yes, .btn-no {
-                padding: 11px 28px;
-                font-size: 0.8rem;
-                letter-spacing: 1px;
-            }
-
-            .buttons-container {
-                gap: 10px;
-                padding: 15px;
-                min-height: 80px;
-            }
-
-            footer {
-                padding: 30px 15px;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* Extra Small Phones */
-        @media (max-width: 360px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .subtitle {
-                font-size: 0.8rem;
-                letter-spacing: 1.5px;
-            }
-
-            header {
-                padding: 25px 12px;
-            }
-
-            .main-container {
-                padding: 15px 12px;
-            }
-
-            .gallery-cards {
-                gap: 30px;
             }
 
             .frame-heart,
@@ -924,78 +1043,105 @@
             .frame-octagon,
             .frame-star {
                 width: 100%;
-                max-width: 220px;
-                height: auto;
+                max-width: 250px;
+            }
+
+            .card {
+                gap: 30px;
             }
 
             .message-box {
-                padding: 15px 12px;
-                font-size: 0.8rem;
-                margin-bottom: 15px;
+                padding: 25px 20px;
+                font-size: 0.85rem;
             }
 
             .message-title {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-
-            .message-text {
-                font-size: 0.85rem;
-                line-height: 1.4;
-            }
-
-            .final-section {
-                padding: 30px 15px;
-            }
-
-            .final-section h2 {
-                font-size: 1.8rem;
+                font-size: 1.2rem;
                 margin-bottom: 10px;
             }
 
-            .final-section p {
+            .message-text {
                 font-size: 0.9rem;
-                margin-bottom: 8px;
+                line-height: 1.6;
+            }
+
+            .final-section {
+                padding: 50px 25px;
+            }
+
+            .final-section h2 {
+                font-size: 2.2rem;
+            }
+
+            .final-section p {
+                font-size: 1.1rem;
             }
 
             .romantic-question {
-                padding: 30px 15px;
-                min-height: 280px;
-                margin-top: 50px;
+                padding: 50px 25px;
+                min-height: 320px;
             }
 
             .romantic-question h2 {
-                font-size: 1.8rem;
-                margin-bottom: 25px;
+                font-size: 2rem;
+                margin-bottom: 40px;
             }
 
             .btn-yes, .btn-no {
-                padding: 10px 22px;
-                font-size: 0.75rem;
-                letter-spacing: 0.5px;
+                padding: 12px 32px;
+                font-size: 0.85rem;
             }
 
             .buttons-container {
-                gap: 8px;
-                padding: 12px;
-                min-height: 70px;
+                gap: 15px;
+                min-height: 100px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.9rem;
             }
 
-            footer {
-                padding: 25px 12px;
+            header {
+                padding: 30px 12px 25px;
+            }
+
+            .main-container {
+                padding: 20px 12px;
+            }
+
+            .btn-yes, .btn-no {
+                padding: 11px 26px;
                 font-size: 0.8rem;
+            }
+
+            .buttons-container {
+                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
+    <!-- Entrance Celebration Overlay -->
+    <div class="entrance-overlay" id="entranceOverlay">
+        <div class="celebration-text">🎉 Happy Birthday Kashish! 🎂</div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="bg-elements">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+    </div>
+
+    <!-- Particles -->
     <div class="particles" id="particlesContainer"></div>
 
     <!-- Header -->
     <header>
-        <h1>Happy Birthday Kashish ❤</h1>
-        <p class="subtitle">A Celebration of You ✨</p>
+        <h1>Happy Birthday Kashish ❤️</h1>
+        <p class="subtitle">A Celebration of Your Beautiful Soul ✨</p>
     </header>
 
     <!-- Main Container -->
@@ -1004,15 +1150,12 @@
             <!-- Card 1: HEART FRAME -->
             <div class="card">
                 <div class="image-frame frame-heart">
-                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="fill: none; stroke: var(--gold); stroke-width: 2;">
-                        <path d="M50,100 Q30,75 20,60 Q10,45 10,35 Q10,20 25,20 Q35,20 50,35 Q65,20 75,20 Q90,20 90,35 Q90,45 80,60 Q70,75 50,100"/>
-                    </svg>
                     <img src="1.jpeg" alt="Memory 1" loading="lazy">
                 </div>
                 <div class="message-content">
                     <div class="message-box">
-                        <div class="message-title">A Perfect Moment</div>
-                        <p class="message-text">You light up every moment with your presence. Your smile is a gift that brightens everyone's day, and your heart is pure gold.</p>
+                        <div class="message-title">My Forever Love</div>
+                        <p class="message-text">You are my greatest love story. Every moment with you feels like a beautiful dream I never want to wake up from. My heart chose you long before my mind caught up. I love you infinitely.</p>
                     </div>
                 </div>
             </div>
@@ -1024,8 +1167,8 @@
                 </div>
                 <div class="message-content">
                     <div class="message-box">
-                        <div class="message-title">Your Grace & Beauty</div>
-                        <p class="message-text">Every moment spent with you is a treasure. Your kindness knows no bounds, and your love touches everyone around you in ways you'll never fully understand.</p>
+                        <div class="message-title">You're My Everything</div>
+                        <p class="message-text">In you, I found not just love, but home. You are my reason to smile, my safe place, and my wildest dream come true. Every day with you is a celebration of the most beautiful gift—us.</p>
                     </div>
                 </div>
             </div>
@@ -1037,8 +1180,8 @@
                 </div>
                 <div class="message-content">
                     <div class="message-box">
-                        <div class="message-title">Endless Joy</div>
-                        <p class="message-text">You bring endless laughter and joy wherever you go. Your infectious enthusiasm and genuine care make this world a more beautiful place.</p>
+                        <div class="message-title">My Heart's Desire</div>
+                        <p class="message-text">Your love is the sweetest melody my soul has ever heard. Every laugh with you echoes in my heart forever. You make ordinary moments magical, and I'm madly, deeply, completely in love with you.</p>
                     </div>
                 </div>
             </div>
@@ -1050,8 +1193,8 @@
                 </div>
                 <div class="message-content">
                     <div class="message-box">
-                        <div class="message-title">Forever Grateful</div>
-                        <p class="message-text">Thank you for being the amazing person you are. Your strength, wisdom, and loving spirit inspire us to be better every single day.</p>
+                        <div class="message-title">Forever & Always</div>
+                        <p class="message-text">You are the answer to prayers I never knew how to ask. With you, I found the kind of love that doesn't just exist—it thrives, it grows, it transforms everything. I choose you, today and every day for eternity.</p>
                     </div>
                 </div>
             </div>
@@ -1063,8 +1206,8 @@
                 </div>
                 <div class="message-content">
                     <div class="message-box">
-                        <div class="message-title">Your Spirit Shines</div>
-                        <p class="message-text">The world is brighter because you're in it. Your passion, your dreams, and your beautiful soul make you truly extraordinary and unforgettable.</p>
+                        <div class="message-title">Soul Mate</div>
+                        <p class="message-text">You complete me in ways I never knew I needed. Your love heals my soul, lifts my spirit, and makes me believe in magic. With you, I found not just a lover, but my perfect other half.</p>
                     </div>
                 </div>
             </div>
@@ -1076,8 +1219,8 @@
                 </div>
                 <div class="message-content">
                     <div class="message-box">
-                        <div class="message-title">Happy Birthday Kashish ❤</div>
-                        <p class="message-text">On your special day, you celebrate everything that makes you YOU. You deserve all the happiness, love, and success in this world. Here's to another year of being amazing!</p>
+                        <div class="message-title">Happy Birthday, My Love</div>
+                        <p class="message-text">On your special day, I celebrate the most beautiful person inside and out. You are my greatest blessing, my sweetest dream, and my eternal love. Happy birthday to the woman who holds my heart forever. I love you beyond words. 💕</p>
                     </div>
                 </div>
             </div>
@@ -1085,41 +1228,159 @@
 
         <!-- Final Message Section -->
         <div class="final-section">
-            <h2>With All My Love 💕</h2>
-            <p>You are extraordinary in every way.</p>
-            <p>Thank you for being the beautiful soul that you are.</p>
-            <p class="special-message">Here's to celebrating YOU today and every day!</p>
+            <h2>You Are My Greatest Love 💕</h2>
+            <p>Every beat of my heart whispers your name.</p>
+            <p>You are my soulmate, my inspiration, and my forever love.</p>
+            <p class="special-message">Thank you for being the love of my life. Here's to loving you more and more with each passing day ✨💕</p>
         </div>
 
         <!-- Romantic Question Section -->
         <div class="romantic-question">
-            <h2>Do You Love Me? ❤💕</h2>
+            <h2>Will You Love Me Forever? 💕</h2>
             <div class="buttons-container">
                 <button class="btn-yes" onclick="showSuccess()">YES 💕</button>
                 <button class="btn-no" id="noBtn">NO</button>
             </div>
             <div class="success-message-final" id="successMsg">
-                <h3>I Knew It! 💝</h3>
-                <p>Thank you for making every moment special! You're the best!</p>
+                <h3>You Make Me The Happiest! 💕✨</h3>
+                <p>My heart beats for you every single day. You are my soulmate, my love, my forever. I adore you endlessly, Kashish! 💕💫</p>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>Made with 💕 because you deserve to be celebrated</p>
+        <p>Forever yours with endless love, devotion, and a lifetime of beautiful moments together 💕✨</p>
     </footer>
 
     <script>
+        // ===== ENTRANCE CELEBRATION ANIMATION =====
+        function startEntranceCelebration() {
+            // Create balloons
+            createBalloons();
+            
+            // Create party poppers
+            setTimeout(() => createPoppers(), 300);
+            setTimeout(() => createPoppers(), 600);
+            
+            // Create floating hearts
+            createFloatingHearts();
+            
+            // Create floating cake
+            setTimeout(() => createFloatingCake(), 800);
+            
+            // Remove overlay after celebration
+            setTimeout(() => {
+                const overlay = document.getElementById('entranceOverlay');
+                if (overlay) overlay.remove();
+            }, 2500);
+        }
+
+        // ===== CREATE BALLOONS =====
+        function createBalloons() {
+            const colors = ['red', 'gold', 'pink'];
+            const positions = [10, 25, 40, 60, 75, 90];
+            
+            positions.forEach((pos, index) => {
+                setTimeout(() => {
+                    const balloon = document.createElement('div');
+                    balloon.className = 'balloon ' + colors[index % colors.length];
+                    balloon.style.left = pos + '%';
+                    balloon.style.bottom = '-100px';
+                    
+                    // Random horizontal movement
+                    const randomTx = (Math.random() - 0.5) * 200;
+                    balloon.style.setProperty('--tx', randomTx + 'px');
+                    
+                    document.body.appendChild(balloon);
+                    
+                    setTimeout(() => balloon.remove(), 4500);
+                }, index * 150);
+            });
+        }
+
+        // ===== CREATE PARTY POPPERS =====
+        function createPoppers() {
+            const popper = document.createElement('div');
+            popper.className = 'popper';
+            popper.style.left = Math.random() * 100 + '%';
+            popper.style.top = Math.random() * 60 + '%';
+            
+            // Create burst effect
+            const colors = ['#e85c9f', '#d4af37', '#ff9fc5', '#ffe0ed'];
+            
+            for (let i = 0; i < 12; i++) {
+                const item = document.createElement('div');
+                item.className = 'popper-item';
+                item.style.background = colors[Math.floor(Math.random() * colors.length)];
+                item.style.left = '25px';
+                item.style.top = '25px';
+                
+                const angle = (i / 12) * Math.PI * 2;
+                const distance = 150;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                item.style.setProperty('--tx', tx + 'px');
+                item.style.setProperty('--ty', ty + 'px');
+                
+                popper.appendChild(item);
+            }
+            
+            document.body.appendChild(popper);
+            setTimeout(() => popper.remove(), 1500);
+        }
+
+        // ===== CREATE FLOATING HEARTS =====
+        function createFloatingHearts() {
+            const hearts = ['❤️', '💕', '💖', '💗', '💝'];
+            const numHearts = 15;
+            
+            for (let i = 0; i < numHearts; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart-float';
+                    heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 80 + 10 + '%';
+                    
+                    const randomTx = (Math.random() - 0.5) * 150;
+                    heart.style.setProperty('--tx', randomTx + 'px');
+                    
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // ===== CREATE FLOATING CAKE =====
+        function createFloatingCake() {
+            const cake = document.createElement('div');
+            cake.className = 'cake-emoji';
+            cake.textContent = '🎂';
+            cake.style.left = '50%';
+            cake.style.top = '50%';
+            cake.style.transform = 'translateX(-50%) translateY(-50%)';
+            
+            document.body.appendChild(cake);
+            setTimeout(() => cake.remove(), 4000);
+        }
+
+        // ===== START ANIMATION ON PAGE LOAD =====
+        window.addEventListener('load', () => {
+            startEntranceCelebration();
+        });
+
         // ===== CREATE PARTICLES =====
         const particlesContainer = document.getElementById('particlesContainer');
         function createParticles() {
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 60; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 3 + 's';
+                particle.style.animationDelay = Math.random() * 4 + 's';
+                particle.style.animationDuration = (3 + Math.random() * 3) + 's';
                 particlesContainer.appendChild(particle);
             }
         }
@@ -1128,34 +1389,25 @@
         // ===== ROMANTIC QUESTION LOGIC =====
         const noBtn = document.getElementById('noBtn');
 
-        // Position NO button randomly within romantic-question container
         function moveButton() {
             const container = document.querySelector('.romantic-question');
-            const containerWidth = container.offsetWidth;
-            const containerHeight = container.offsetHeight;
+            const containerRect = container.getBoundingClientRect();
             const btnWidth = noBtn.offsetWidth;
             const btnHeight = noBtn.offsetHeight;
             
-            // Random position within container, leaving margin
-            const randomX = Math.random() * (containerWidth - btnWidth - 40) + 20;
-            const randomY = Math.random() * (containerHeight - btnHeight - 40) + 20;
+            const randomX = Math.random() * (containerRect.width - btnWidth - 60) + 30;
+            const randomY = Math.random() * (containerRect.height - btnHeight - 60) + 30;
             
             noBtn.classList.add('moving');
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = (container.getBoundingClientRect().left + randomX) + 'px';
-            noBtn.style.top = (container.getBoundingClientRect().top + randomY) + 'px';
+            noBtn.style.left = (containerRect.left + randomX) + 'px';
+            noBtn.style.top = (containerRect.top + randomY) + 'px';
         }
 
-        // Move on hover
         noBtn.addEventListener('mouseover', moveButton);
-        
-        // Move on click attempt
         noBtn.addEventListener('click', (e) => {
             e.preventDefault();
             moveButton();
         });
-
-        // Move on touch (mobile)
         noBtn.addEventListener('touchstart', (e) => {
             e.preventDefault();
             moveButton();
@@ -1168,28 +1420,28 @@
             buttonsContainer.style.display = 'none';
             successMsg.style.display = 'block';
             
-            // Add confetti effect
             createConfetti();
         }
 
         // ===== CONFETTI EFFECT =====
         function createConfetti() {
-            const colors = ['#ff9fc5', '#d4af37', '#ffd6e8', '#e85c9f'];
-            for (let i = 0; i < 50; i++) {
+            const colors = ['#e85c9f', '#d4af37', '#ffd6e8', '#ff9fc5', '#f0e6d2', '#ffe0ed'];
+            for (let i = 0; i < 80; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
+                confetti.style.width = (Math.random() * 8 + 4) + 'px';
+                confetti.style.height = (Math.random() * 8 + 4) + 'px';
                 confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 confetti.style.left = Math.random() * window.innerWidth + 'px';
                 confetti.style.top = '-10px';
                 confetti.style.borderRadius = '50%';
                 confetti.style.pointerEvents = 'none';
                 confetti.style.zIndex = '999';
-                confetti.style.animation = `fall ${2 + Math.random() * 1}s linear forwards`;
+                confetti.style.boxShadow = '0 0 10px ' + colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `fall ${2 + Math.random() * 1.5}s ease-in forwards`;
                 document.body.appendChild(confetti);
                 
-                setTimeout(() => confetti.remove(), 3000);
+                setTimeout(() => confetti.remove(), 3500);
             }
         }
 
@@ -1198,7 +1450,7 @@
         style.textContent = `
             @keyframes fall {
                 to {
-                    transform: translateY(${window.innerHeight + 20}px) rotate(360deg);
+                    transform: translateY(${window.innerHeight + 20}px) rotateZ(${Math.random() * 360}deg);
                     opacity: 0;
                 }
             }
